@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Get expert advice on choosing the best bike, phone, or watch for you. Starting from ₹99 to ₹1499.">
+  <title>Product Choice Consultant 6</title>
+  <link rel="icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(to right, #f0f2f5, #f9f9f9);
+      color: #0D1B2A;
+    }
+    header {
+      background-color: #0D1B2A;
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+     .nav-toggle {
+      display: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: white;
+    }
+    nav {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #FF6700;
+    }
+    @media (max-width: 768px) {
+      .nav-toggle {
+        display: block;
+        margin-left: auto;
+      }
+      nav {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: #0D1B2A;
+        padding: 1rem;
+      }
+      nav.show {
+        display: flex;
+      }
+    }
+    header nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    header nav a:hover {
+      color: #FF6700;
+    }
+    .hero {
+      padding: 5rem 2rem 2rem;
+      text-align: center;
+      background: linear-gradient(rgba(13, 27, 42, 0.7), rgba(13, 27, 42, 0.7)), url('photos/main.png') no-repeat center center/cover;
+      color: white;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 6px #000;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      text-shadow: 1px 1px 2px #000;
+    }
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      padding: 3rem 2rem;
+    }
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+    }
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+    }
+    .card h3 {
+      margin-bottom: 0.75rem;
+      font-size: 1.3rem;
+    }
+    .card p {
+      font-size: 0.95rem;
+      margin-bottom: 1.2rem;
+    }
+    .card button {
+      background-color: #FF6700;
+      border: none;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+    .card button:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+    .card button:hover:not(:disabled) {
+      background-color: #e65c00;
+    }
+    .section, .testimonials, .faq {
+      padding: 3.5rem 2rem;
+      text-align: center;
+      background-color: #ffffff;
+    }
+    .section:nth-child(even), .faq {
+      background-color: #f8f9fa;
+    }
+    .section h2, .testimonials h2, .faq h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .section p, .faq-item, .testimonial {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+    .testimonial {
+      font-style: italic;
+      color: #444;
+      max-width: 700px;
+      margin: 0 auto 2rem;
+    }
+    .faq-item {
+      max-width: 700px;
+      margin: 1rem auto;
+      text-align: left;
+    }
+    footer {
+      background-color: #0D1B2A;
+      color: white;
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.9rem;
+    }
+    a {
+      color: #FF6700;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div style="display: flex; align-items: center; gap: 0.75rem;">
+  <img src="photos/logo2.png" alt="Logo" style="height: 50px; width: 50px; border-radius: 50%;">
+  <h1 style="margin: 0; font-size: 1.8rem;">Product Choice Consultant</h1>
+</div>
+
+    <span id=""></span>
+    <div class="nav-toggle">☰</div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#testimonials">Testimonials</a>
+      <a href="#faq">FAQ</a>
+      <a href="#services">Service</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Your Personal Gadget Guide</h1>
+    <p>We help you pick the perfect bike, phone, or watch — tailored to your needs.</p>
+  </section>
+
+  <section class="categories">
+    <div class="card">
+      <img src="photos/bike.png" alt="Bike">
+      <h3>Bike Consultation</h3>
+      <p>Let us guide you to your perfect bike. Budget, mileage, looks — all covered.</p>
+      <a href="https://forms.gle/PmMfAvPd8aBtQKQy6"><button>Get Started</button></a>
+    </div>
+    <div class="card">
+      <img src="photos/car.png" alt="Car">
+      <h3>Car Consultation</h3>
+      <p>Confused by cars? We'll guide you straight to your perfect one</p>
+       <a href="https://forms.gle/6NzpcR9SyMYBCdSd8"><button>Get Started</button></a>
+    </div>
+    <div class="card">
+      <img src="photos/watch.png" alt="Watches">
+      <h3>Watches</h3>
+      <p>Coming Soon</p>
+      <button disabled>Coming Soon</button>
+    </div>
+    <div class="card">
+      <img src="photos/camera.png" alt="Cameras">
+      <h3>Cameras</h3>
+      <p>Coming Soon</p>
+      <button disabled>Coming Soon</button>
+    </div>
+    <div class="card">
+      <img src="photos/laptop.png" alt="Laptop">
+      <h3>Laptops</h3>
+      <p>Coming Soon</p>
+      <button disabled>Coming Soon</button>
+    </div>
+    <div class="card">
+      <img src="photos/tv.png" alt="TV">
+      <h3>Smart TVs</h3>
+      <p>Coming Soon</p>
+      <button disabled>Coming Soon</button>
+    </div>
+    <div class="card">
+      <img src="photos/phone.png" alt="Phone">
+      <h3>Smartphones</h3>
+      <p>Coming Soon</p>
+      <button disabled>Coming Soon</button>
+    </div>
+    <div class="card">
+      <img src="photos/appliances.png" alt="Home_Appliances">
+      <h3>Home Appliances</h3>
+      <p>Coming Soon</p>
+      <button disabled>Coming Soon</button>
+    </div>
+  </section>
+
+  <section id="testimonials" class="testimonials">
+    <h2>What Our Testers Say</h2>
+    <div class="testimonial">"I was confused between two bikes. Their advice helped me get the perfect one in my budget. Totally worth ₹499!" – Rahul S.</div>
+    <div class="testimonial">"The suggestions were clear and personalized. It felt like they understood my needs better than the showroom did!" – Meena K.</div>
+    <div class="testimonial">"Very helpful! I’m waiting for the phone section to launch too." – Arjun R.</div>
+  </section>
+
+  <section id="faq" class="faq">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <strong>Q: How do I get a consultation?</strong><br>
+      A: Click on the "Get Started" button under the bike section. Fill the form, and you'll get personalized advice within 24 hours.
+    </div>
+    <div class="faq-item">
+      <strong>Q: What is the consultation fee?</strong><br>
+      A: Currently ₹499 for a detailed suggestion with multiple options and expert reasoning.
+    </div>
+    <div class="faq-item">
+      <strong>Q: Can I consult for phones or watches?</strong><br>
+      A: These services are launching soon. Stay tuned!
+    </div>
+    <div class="faq-item">
+      <strong>Q: How does the consultation work?</strong><br>
+      A: You select a product type, fill a form, and receive custom recommendations in 24 hours.
+    </div>
+    <div class="faq-item">
+      <strong>Q: Can I trust the recommendations?</strong><br>
+      A: Yes! Every suggestion is based on your responses, budget, and latest expert reviews.
+    </div>
+    <div class="faq-item">
+      <strong>Q: Will new product categories be available soon?</strong><br>
+      A: Yes, we’re working on launching Phone, Watch, and Laptop consulting soon!
+    </div>
+  </section>
+
+  <section id="services" class="section">
+    <h2>Our Services</h2>
+    <p>✔ Personalized product consultation (Bike, Phone, Watch & more)</p>
+    <p>✔ Handpicked recommendations based on your needs</p>
+    <p>✔ Simple, affordable, and fast</p>
+  </section>
+
+  <section id="pricing" class="section">
+    <h2>Pricing</h2>
+    <p>🚲 Bike Consultation – ₹499 (One-time, No hidden charges)</p>
+    <p>🚙 Car Consultation – ₹1499 (One-time, No hidden charges)</p>
+    <p>📱 Phone & Other Products – Coming Soon – Starting from ₹99 to ₹999, (One-time, No hidden charges)</p>
+
+    <p>No hidden fees. Just expert advice!</p>
+  </section>
+
+  <section id="contact" class="section">
+    <h2>Contact Us</h2>
+    <p>Have questions or need help?</p>
+    <p>Email us at <a>suppthepcconsultation@gmail.com</a></p>
+  </section>
+
+  <footer>
+  &copy; 2025 Product Choice Consultant. All rights reserved.
+
+  <div style="margin-top: 1rem;">
+    <a href="FINAL/LEGALPAPERS/t&c.docx" download style="color: #FF6700; text-decoration: underline; margin-right: 1rem;">
+      Terms & Conditions
+    </a>
+    <a href="FINAL/LEGALPAPERS/ppc.docx" download style="color: #FF6700; text-decoration: underline; margin-right: 1rem;">
+      Privacy Policy
+    </a>
+    <a href="FINAL/LEGALPAPERS/rp.docx" download style="color: #FF6700; text-decoration: underline;">
+      Refund Policy
+    </a>
+  </div>
+</footer>
+
+  <script>
+    document.querySelector('.nav-toggle').addEventListener('click', () => {
+      document.querySelector('nav').classList.toggle('show');
+    });
+  </script>
+</body>
+</html>
